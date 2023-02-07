@@ -15,13 +15,33 @@ class MyAppDemo extends StatelessWidget {
         backgroundColor: Colors.pink,
         title: const Text("flutter Demo App"),
       ),
-      body: Center(
-        child: Container(
-          child: const Text("Hi mom"),
-          margin: const EdgeInsets.all(10),
-          color: Colors.red,
-        ),
+      body: Builder(
+          builder: (context) => ElevatedButton(
+                child: Text("counter"),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const MyApp(),
+                      ));
+                },
+              )),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => MyApp(),
+              ));
+        },
       ),
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+        BottomNavigationBarItem(icon: Icon(Icons.business), label: "Business"),
+        BottomNavigationBarItem(icon: Icon(Icons.school), label: "School"),
+      ]),
+      drawer: Drawer(child: Text("yo")),
     ));
   }
 }
@@ -32,22 +52,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.pink,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return MyHomePage(title: 'Flutter Demo Home Page');
   }
 }
 
