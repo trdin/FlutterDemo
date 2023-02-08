@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'names.dart';
+import 'namesList.dart';
 
 void main() {
   runApp(const MyAppDemo());
@@ -40,6 +41,17 @@ class MyAppDemo extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (_) => const InputApp(),
+                              ));
+                        },
+                      )),
+              Builder(
+                  builder: (context) => ElevatedButton(
+                        child: Text("Go to Names List"),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const ListApp(),
                               ));
                         },
                       ))
