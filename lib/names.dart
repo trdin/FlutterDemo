@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'Person.dart';
 
 Future<Person> createPerson(String name) async {
   final http.Response response = await http.post(
@@ -20,20 +21,6 @@ Future<Person> createPerson(String name) async {
     return Person.fromJson(json.decode(response.body));
   } else {
     throw Exception('Failed to create person.');
-  }
-}
-
-class Person {
-  final String id;
-  final String name;
-
-  Person({required this.id, required this.name});
-
-  factory Person.fromJson(Map<String, dynamic> json) {
-    return Person(
-      id: json['id'],
-      name: json['name'],
-    );
   }
 }
 
